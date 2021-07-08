@@ -2,7 +2,7 @@ version: 0.2
 phases:
   install:
     commands:
-      - "npm install --unsafe-perm=true --allow-root"
+      - "npm install"
   build:
     commands:
       - "npm run build"
