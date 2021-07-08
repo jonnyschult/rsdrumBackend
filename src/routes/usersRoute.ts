@@ -2,7 +2,7 @@ import * as dotenv from "dotenv";
 dotenv.config();
 import { Router, Request, Response } from "express";
 import jwt from "jsonwebtoken";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 import { v4 as uuidV4 } from "uuid";
 import documentClient from "../db";
 import validation from "../middleware/userValidation";
@@ -40,7 +40,7 @@ usersRouter.post("/register", async (req: Request, res: Response) => {
     }
 
     //Hash password to save to DB, delete password from info to be passed to DB and add passwordhash to object to be save to DB
-    const passwordhash: string = bcrypt.hashSync(info.password, 10);
+    const passwordhash: string = bcrypt.hashSync(info.password!, 10);
     info.passwordhash = passwordhash;
     delete info.password;
 
@@ -115,7 +115,7 @@ usersRouter.post("/login", async (req: Request, res: Response) => {
     const user = queryResults.Items[0].info as User;
 
     //Returns a boolean predicated on the matching of the passwords
-    const validPass = await bcrypt.compare(info.password, user.passwordhash!);
+    const validPass = await bcrypt.compare(info.password!, user.passwordhash!);
 
     //Throw error if the passwords don't match.
     if (!validPass) {
