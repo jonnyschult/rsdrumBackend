@@ -2,14 +2,15 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Assignment = void 0;
 class Assignment {
-    constructor(assignment_number, title, description, id, lesson_id, created_at, updated_at) {
-        this.assignment_number = assignment_number;
+    constructor(assignmentNumber, title, description, primaryImg, auxImg, url, linkName, id) {
+        this.assignmentNumber = assignmentNumber;
         this.title = title;
         this.description = description;
+        this.primaryImg = primaryImg;
+        this.auxImg = auxImg;
+        this.url = url;
+        this.linkName = linkName;
         this.id = id;
-        this.lesson_id = lesson_id;
-        this.created_at = created_at;
-        this.updated_at = updated_at;
     }
 }
 exports.Assignment = Assignment;

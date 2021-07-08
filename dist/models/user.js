@@ -2,17 +2,17 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.User = void 0;
 class User {
-    constructor(email, password, date_of_birth, active, student, site_admin, first_name, last_name, created_at, updated_at, id, passwordhash) {
+    constructor(email, password, DOB, active, student, admin, firstName, lastName, createdAt, updatedAt, id, passwordhash) {
         this.email = email;
         this.password = password;
-        this.date_of_birth = date_of_birth;
+        this.DOB = DOB;
         this.active = active;
         this.student = student;
-        this.site_admin = site_admin;
-        this.first_name = first_name;
-        this.last_name = last_name;
-        this.created_at = created_at;
-        this.updated_at = updated_at;
+        this.admin = admin;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
         this.id = id;
         this.passwordhash = passwordhash;
     }

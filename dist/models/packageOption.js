@@ -2,10 +2,10 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PackageOption = void 0;
 class PackageOption {
-    constructor(price, title, number_of_lessons, id) {
+    constructor(price, title, numberOfLessons, id) {
         this.price = price;
         this.title = title;
-        this.number_of_lessons = number_of_lessons;
+        this.numberOfLessons = numberOfLessons;
         this.id = id;
     }
 }

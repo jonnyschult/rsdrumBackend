@@ -2,10 +2,15 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Lesson = void 0;
 class Lesson {
-    constructor(lesson_number, title, description, id) {
-        this.lesson_number = lesson_number;
+    constructor(lessonNumber, lessonLevel, coverImg, title, description, assignments, students, comments, id) {
+        this.lessonNumber = lessonNumber;
+        this.lessonLevel = lessonLevel;
+        this.coverImg = coverImg;
         this.title = title;
         this.description = description;
+        this.assignments = assignments;
+        this.students = students;
+        this.comments = comments;
         this.id = id;
     }
 }

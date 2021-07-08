@@ -30,34 +30,11 @@ const routes_1 = require("./routes");
 const app = express_1.default();
 app.use(express_1.default.json());
 app.use(index_1.headers);
-app.use("/test", routes_1.testRouter);
-// app.use("/users", usersRouter);
-// app.use("/lessons", lessonsRouter);
-// app.use("/assignments", assignmentsRouter);
-// app.use("/videos", videosRouter);
-// app.use("/comments", commentsRouter);
-// app.use("/tags", tagsRouter);
-// app.use("/payments", paymentRouter);
-// app.use("/mailer", nodemailerRouter);
-// var params = {
-//   Key: {
-//     id: {
-//       S: "asdf-fdsa-blah-yoyo",
-//     },
-//     category: {
-//       S: "comments",
-//     },
-//   },
-//   TableName: "rsdrum",
-// };
-// dynamodb.getItem(params, function (err, data) {
-//   if (err) console.log(err, err.stack);
-//   // an error occurred
-//   else {
-//     const info: any = data.Item!.comments_list.L![0].M;
-//     console.log(info); // successful response
-//   }
-// });
+app.use("/users", routes_1.usersRouter);
+app.use("/lessons", routes_1.lessonsRouter);
+app.use("/videos", routes_1.videosRouter);
+app.use("/payments", routes_1.paymentRouter);
+app.use("/mailer", routes_1.nodemailerRouter);
 app.listen(process.env.PORT, () => {
     console.log(`Listening on ${process.env.PORT}`);
 });
