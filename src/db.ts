@@ -4,7 +4,7 @@ dotenv.config();
 
 const documentClient = new DynamoDB.DocumentClient({
   region: "us-east-2",
-  endpoint: "https://dynamodb.us-east-2.amazonaws.com",
+  endpoint: process.env.DB_ENDPOINT,
   secretAccessKey: process.env.AWS_SECRET_KEY,
   accessKeyId: process.env.AWS_ACCESS_KEY,
 });
