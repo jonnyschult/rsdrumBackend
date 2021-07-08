@@ -23,8 +23,8 @@ const aws_sdk_1 = require("aws-sdk");
 const dotenv = __importStar(require("dotenv"));
 dotenv.config();
 const documentClient = new aws_sdk_1.DynamoDB.DocumentClient({
-    region: "us-east-1",
-    endpoint: "http://localhost:8000",
+    region: "us-east-2",
+    endpoint: process.env.DB_ENDPOINT,
     secretAccessKey: process.env.AWS_SECRET_KEY,
     accessKeyId: process.env.AWS_ACCESS_KEY,
 });
