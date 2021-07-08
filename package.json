@@ -20,7 +20,8 @@
     "nodemailer": "^6.5.0",
     "pg": "^8.5.1",
     "stripe": "^8.140.0",
-    "uuid": "^8.3.2"
+    "uuid": "^8.3.2",
+    "typescript": "^4.3.2"
   },
   "devDependencies": {
     "@types/nodemailer": "^6.4.1",
@@ -31,7 +32,6 @@
     "@types/node": "^14.14.28",
     "@types/pg": "^7.14.10",
     "@types/uuid": "^8.3.0",
-    "nodemon": "^2.0.7",
-    "typescript": "^4.3.2"
+    "nodemon": "^2.0.7"
   }
 }
