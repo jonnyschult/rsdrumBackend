@@ -75,7 +75,7 @@ usersRouter.post("/register", async (req: Request, res: Response) => {
 
     res.status(200).json({ message: "User Created", token, user: newUser });
   } catch (error) {
-    console.log(error);
+    console.log("In register endpoint", error);
     if (error.status < 500) {
       res.status(error.status).json({ message: error.message });
     } else if (error.constraint === "users_email_key") {
