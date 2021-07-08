@@ -2,7 +2,6 @@ version: 0.2
 phases:
   install:
     commands:
-      - "npm install bcrypt"
       - "npm install"
   build:
     commands:
