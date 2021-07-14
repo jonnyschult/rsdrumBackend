@@ -18,7 +18,10 @@ const validation = async (req: RequestWithUser, res: Response, next: NextFunctio
         const token: string = req.headers.authorization;
         await jwt.verify(token, process.env.JWT_SECRET!, async (err, decoded) => {
           if (err) {
-            res.status(401).json({ message: "Problem with token", err });
+            throw new CustomError(
+              401,
+              "Problem with token. Likely session has expired. Logout and log back in."
+            );
           }
           if (decoded) {
             const getParams = {
