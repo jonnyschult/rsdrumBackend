@@ -9,7 +9,6 @@ import validation from "../middleware/userValidation";
 import { User, RequestWithUser, CustomError, Lesson, Comment } from "../models";
 import { DocumentClient } from "aws-sdk/clients/dynamodb";
 import { updateParamsFn, typeConverter } from "../utilities";
-// import getQueryArgs from "../utilities/getQueryArgsFn";
 
 const usersRouter = Router();
 
