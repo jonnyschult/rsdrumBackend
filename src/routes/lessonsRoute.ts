@@ -311,7 +311,7 @@ lessonsRouter.put("/updateLesson", validation, async (req: RequestWithUser, res:
 
       UpdateExpression: updateInfo.setString,
       ExpressionAttributeValues: updateInfo.exAttVals,
-      ReturnValues: "UPDATED_NEW",
+      ReturnValues: "ALL_NEW",
     };
 
     const updatedLessonData = await documentClient.update(updateParams).promise();
