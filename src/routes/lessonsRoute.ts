@@ -93,7 +93,7 @@ lessonsRouter.put("/addAssignment", validation, async (req: RequestWithUser, res
 
       UpdateExpression: "set info.assignments = :assignments",
       ExpressionAttributeValues: { ":assignments": updatedAssignmentsArr },
-      ReturnValues: "UPDATED_NEW",
+      ReturnValues: "ALL_NEW",
     };
 
     const updatedLessonData = await documentClient.update(updateParams).promise();
@@ -152,7 +152,7 @@ lessonsRouter.put("/addStudent", validation, async (req: RequestWithUser, res: R
 
       UpdateExpression: "set info.students = :students",
       ExpressionAttributeValues: { ":students": updatedStudentsArr },
-      ReturnValues: "UPDATED_NEW",
+      ReturnValues: "ALL_NEW",
     };
 
     const updatedLessonData = await documentClient.update(updateParams).promise();
@@ -213,7 +213,7 @@ lessonsRouter.put("/addComment", validation, async (req: RequestWithUser, res: R
 
       UpdateExpression: "set info.comments = :comments",
       ExpressionAttributeValues: { ":comments": updatedCommentsInput },
-      ReturnValues: "UPDATED_NEW",
+      ReturnValues: "ALL_NEW",
     };
 
     const updatedLessonData = await documentClient.update(updateParams).promise();
@@ -376,7 +376,7 @@ lessonsRouter.put("/updateAssignment", validation, async (req: RequestWithUser, 
 
       UpdateExpression: "set info.assignments = :assignments",
       ExpressionAttributeValues: { ":assignments": newAssignmentsArr },
-      ReturnValues: "UPDATED_NEW",
+      ReturnValues: "ALL_NEW",
     };
 
     const updatedLessonData = await documentClient.update(updateParams).promise();
@@ -439,7 +439,7 @@ lessonsRouter.put("/updateComment", validation, async (req: RequestWithUser, res
 
       UpdateExpression: "set info.comments = :comments",
       ExpressionAttributeValues: { ":comments": updatedCommentsInput },
-      ReturnValues: "UPDATED_NEW",
+      ReturnValues: "ALL_NEW",
     };
 
     const updatedLessonData = await documentClient.update(updateParams).promise();
@@ -494,7 +494,7 @@ lessonsRouter.put("/removeAssignment", validation, async (req: RequestWithUser, 
 
       UpdateExpression: "set info.assignments = :assignments",
       ExpressionAttributeValues: { ":assignments": updatedAssignmentsInput },
-      ReturnValues: "UPDATED_NEW",
+      ReturnValues: "ALL_NEW",
     };
 
     const updatedLessonData = await documentClient.update(updateParams).promise();
@@ -549,7 +549,7 @@ lessonsRouter.put("/removeStudent", validation, async (req: RequestWithUser, res
 
       UpdateExpression: "set info.students = :students",
       ExpressionAttributeValues: { ":students": updatedStudentsInput },
-      ReturnValues: "UPDATED_NEW",
+      ReturnValues: "ALL_NEW",
     };
 
     const updatedLessonData = await documentClient.update(updateParams).promise();
@@ -604,7 +604,7 @@ lessonsRouter.put("/removeComment", validation, async (req: RequestWithUser, res
 
       UpdateExpression: "set info.comments = :comments",
       ExpressionAttributeValues: { ":comments": updatedCommentsInput },
-      ReturnValues: "UPDATED_NEW",
+      ReturnValues: "ALL_NEW",
     };
 
     const updatedLessonData = await documentClient.update(updateParams).promise();

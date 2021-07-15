@@ -261,7 +261,7 @@ paymentRouter.put(
 
         UpdateExpression: updateInfo.setString,
         ExpressionAttributeValues: updateInfo.exAttVals,
-        ReturnValues: "UPDATED_NEW",
+        ReturnValues: "ALL_NEW",
       };
 
       const updatedPackageData = await documentClient.update(updateParams).promise();

@@ -176,7 +176,7 @@ videosRouter.put("/updateVideo", validation, async (req: RequestWithUser, res: R
 
       UpdateExpression: updateInfo.setString,
       ExpressionAttributeValues: updateInfo.exAttVals,
-      ReturnValues: "UPDATED_NEW",
+      ReturnValues: "ALL_NEW",
     };
 
     const updatedVideoInfo = await documentClient.update(updateParams).promise();

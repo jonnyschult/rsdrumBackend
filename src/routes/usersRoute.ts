@@ -251,7 +251,7 @@ usersRouter.put("/updateUser", validation, async (req: RequestWithUser, res: Res
 
       UpdateExpression: updateInfo.setString,
       ExpressionAttributeValues: updateInfo.exAttVals,
-      ReturnValues: "UPDATED_NEW",
+      ReturnValues: "ALL_NEW",
     };
 
     const updatedUserInfo = await documentClient.update(updateParams).promise();
@@ -312,7 +312,7 @@ usersRouter.put("/updatePassword", validation, async (req: RequestWithUser, res:
       },
       UpdateExpression: "set info.passwordhash = :passHash",
       ExpressionAttributeValues: { ":passHash": passHash },
-      ReturnValues: "UPDATED_NEW",
+      ReturnValues: "ALL_NEW",
     };
 
     const updatedUserInfo = await documentClient.update(updateParams).promise();
