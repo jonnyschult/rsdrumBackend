@@ -24,6 +24,10 @@ usersRouter.post("/register", async (req: Request, res: Response) => {
       throw new CustomError(406, "Password less than 8 characters long");
     }
 
+    if (info.admin && info.password !== process.env.ADMIN_PASS) {
+      throw new CustomError(401, "Request failed. Not authorized to create admin");
+    }
+
     const queryParams: DocumentClient.QueryInput = {
       TableName: "rsdrum",
       KeyConditionExpression: "#category = :userInfo",
