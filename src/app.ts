@@ -16,6 +16,7 @@ app.use("/videos", videosRouter);
 app.use("/payments", paymentRouter);
 app.use("/mailer", nodemailerRouter);
 app.get("/", (req, res) => {
+  console.log("Hello");
   res.status(200).json({ message: "Success" });
 });
 
