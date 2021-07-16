@@ -23,7 +23,7 @@ This project is hosted via AWS(DynamoDB, Elastic Beanstalk, Amplify, Route 53)
 
 ## Frontend
 
-Go to [GitHub-rsdrumFrontend](https://github.com/jonnyschult/rsdrumFrontend) and follow the instructions on the README
+Go to [GitHub-rsdrumFrontend](https://github.com/jonnyschult/rsdrumFrontend) and follow the instructions in the README
 
 ## Backend
 
