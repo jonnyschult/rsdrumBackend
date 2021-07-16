@@ -14,8 +14,13 @@ app.use("/lessons", lessonsRouter);
 app.use("/videos", videosRouter);
 app.use("/payments", paymentRouter);
 app.use("/mailer", nodemailerRouter);
-app.get("/", (req, res) => {
-  res.status(200);
+app.get("/healthCheck", (req, res) => {
+  try {
+    res.status(200);
+    console.log("Health ");
+  } catch (error) {
+    console.log("Health check error:", error);
+  }
 });
 
 app.listen(process.env.PORT, () => {
