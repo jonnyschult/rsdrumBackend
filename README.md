@@ -2,11 +2,11 @@
 
 ## App Description
 
-This project is designed to enable R.S. Drum Studio to augment their in person learning. It allows for:
+This project is designed to enable R.S. Drum Studio to augment their in-person learning. It allows for:
 
 - Currated video collections with titles and descriptions, searchable by tags
 - Online payments through Stripe and retrievable payment history
-- CRUD lesson packages for in person instruction
+- CRUD lesson packages for in person instruction options
 - Full user CRUD
 - Mailgun messages for propsective customers with hosted domain
 - Lesson Creation with the following features:
@@ -17,19 +17,23 @@ This project is designed to enable R.S. Drum Studio to augment their in person l
   - Comments which allow for student feedback and further instruction or clarifcation from the instructor with unread indicators
   - All lessons and assignments are CRUD-able
 
+This project is hosted via AWS(DynamoDB, Elastic Beanstalk, Amplify, Route 53)
+
+[R.S. Drum Studio production site](https://www.rsdrum.com)
+
 ## Frontend
 
 Go to [GitHub-rsdrumFrontend](https://github.com/jonnyschult/rsdrumFrontend) and follow the instructions on the README
 
 ## Backend
 
-This is a bit of work to get up and going locally, mostly because it requires you to install and run a local version of DynamoDB, but you can see the functionality for an instructor if you get it going.
+This is a bit of work to get up and going locally, mostly because it requires you to install and run a local version of DynamoDB, but you can see the functionality for an instructor when you have it running locally.
 
 **Contact form and Payments will not work in local development without setting up a test Stripe and mailgun email**
 
 - Requirements:
   - Node
-  - Nodemon
+  - Nodemon (could avoid if you change the dev script)
   - AWS CLI
   - npm or yarn
   - DynamoDB Local
