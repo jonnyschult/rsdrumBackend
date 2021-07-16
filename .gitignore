@@ -1,2 +1,5 @@
 node_modules
 .env
+database.pgsql
+dynoSchema.sh
+yarn.lock
