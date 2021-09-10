@@ -68,9 +68,9 @@ videosRouter.post("/addVideo", validation, async (req: RequestWithUser, res: Res
     await documentClient.put(putParams).promise();
 
     res.status(200).json({ message: "Success. Video saved", newVideo: info });
-  } catch (error) {
+  } catch (error: any) {
     console.log(error);
-    if (error.status < 500) {
+    if (error.status !== undefined && error.status < 500 && error.message !== undefined) {
       res.status(+error.status).json({ message: error.message });
     } else if (error.code === "23505") {
       res.status(409).json({ message: "Video already exists", error });
@@ -114,7 +114,7 @@ videosRouter.get("/getVideos", async (req: RequestWithUser, res: Response) => {
 
     const videos = results.Items!.map((dbEntry) => dbEntry.info);
     res.status(200).json({ message: "Success.", videos });
-  } catch (error) {
+  } catch (error: any) {
     console.log(error);
     res.status(500).json({ message: "Internal server error", error });
   }
@@ -142,7 +142,7 @@ videosRouter.get("/getVideosByTag", async (req: RequestWithUser, res: Response) 
       .filter((video) => video.tags.includes(info.tag));
 
     res.status(200).json({ message: "Success.", videos });
-  } catch (error) {
+  } catch (error: any) {
     console.log(error);
     res.status(500).json({ message: "Internal server error", error });
   }
@@ -183,9 +183,9 @@ videosRouter.put("/updateVideo", validation, async (req: RequestWithUser, res: R
     const updatedVideo = updatedVideoInfo.Attributes!.info;
 
     res.status(200).json({ message: "Successfully updated video", updatedVideo });
-  } catch (error) {
+  } catch (error: any) {
     console.log(error);
-    if (error.status < 500) {
+    if (error.status !== undefined && error.status < 500 && error.message !== undefined) {
       res.status(error.status).json({ message: error.message });
     } else {
       res.status(500).json({ message: "Internal server error", error });
@@ -217,9 +217,9 @@ videosRouter.delete("/deleteVideo/:id", validation, async (req: RequestWithUser,
     await documentClient.delete(params, () => {});
 
     res.status(200).json({ message: "Video deleted." });
-  } catch (error) {
+  } catch (error: any) {
     console.log(error);
-    if (error.status < 500) {
+    if (error.status !== undefined && error.status < 500 && error.message !== undefined) {
       res.status(error.status).json({ message: error.message });
     } else {
       res.status(500).json({ message: "Internal server error", error });

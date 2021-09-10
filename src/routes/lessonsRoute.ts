@@ -42,8 +42,8 @@ lessonsRouter.post("/createLesson", validation, async (req: RequestWithUser, res
     await documentClient.put(putParams).promise();
 
     res.status(200).json({ message: "Lesson Created!", newLesson: info });
-  } catch (error) {
-    if (error.status < 500) {
+  } catch (error: any) {
+    if (error.status !== undefined && error.status < 500 && error.message !== undefined) {
       res.status(error.status).json({ message: error.message });
     } else {
       res.status(500).json({ message: "Internal server error", error });
@@ -103,9 +103,9 @@ lessonsRouter.put("/addAssignment", validation, async (req: RequestWithUser, res
       message: "Success. Assignment added to lesson.",
       updatedAssignments,
     });
-  } catch (error) {
+  } catch (error: any) {
     console.log(error);
-    if (error.status < 500) {
+    if (error.status !== undefined && error.status < 500 && error.message !== undefined) {
       res.status(error.status).json({ message: error.message });
     } else {
       res.status(500).json({ message: "Internal server error", error });
@@ -162,9 +162,9 @@ lessonsRouter.put("/addStudent", validation, async (req: RequestWithUser, res: R
       message: "Success. Student assigned lesson.",
       updatedStudents,
     });
-  } catch (error) {
+  } catch (error: any) {
     console.log("Add Student Error", error);
-    if (error.status < 500) {
+    if (error.status !== undefined && error.status < 500 && error.message !== undefined) {
       res.status(error.status).json({ message: error.message });
     } else {
       res.status(500).json({ message: "Internal server error", error });
@@ -223,9 +223,9 @@ lessonsRouter.put("/addComment", validation, async (req: RequestWithUser, res: R
       message: "Success. Comment posted.",
       updatedComments,
     });
-  } catch (error) {
+  } catch (error: any) {
     console.log(error);
-    if (error.status < 500) {
+    if (error.status !== undefined && error.status < 500 && error.message !== undefined) {
       res.status(error.status).json({ message: error.message });
     } else {
       res.status(500).json({ message: "Internal server error", error });
@@ -274,9 +274,9 @@ lessonsRouter.get("/getLessons", validation, async (req: RequestWithUser, res: R
     }
 
     res.status(200).json({ message: "Success.", lessons });
-  } catch (error) {
+  } catch (error: any) {
     console.log(error);
-    if (error.status < 500) {
+    if (error.status !== undefined && error.status < 500 && error.message !== undefined) {
       res.status(error.status).json({ message: error.message });
     } else {
       res.status(500).json({ message: "Internal server error", error });
@@ -318,9 +318,9 @@ lessonsRouter.put("/updateLesson", validation, async (req: RequestWithUser, res:
     const updatedLesson = updatedLessonData.Attributes!.info;
 
     res.status(200).json({ message: "Successfully updated lesson", updatedLesson });
-  } catch (error) {
+  } catch (error: any) {
     console.log(error);
-    if (error.status < 500) {
+    if (error.status !== undefined && error.status < 500 && error.message !== undefined) {
       res.status(error.status).json({ message: error.message });
     } else {
       res.status(500).json({ message: "Internal server error", error });
@@ -383,9 +383,9 @@ lessonsRouter.put("/updateAssignment", validation, async (req: RequestWithUser, 
     const updatedAssignments = updatedLessonData.Attributes!.info.assignments;
 
     res.status(200).json({ message: "Success", updatedAssignments });
-  } catch (error) {
+  } catch (error: any) {
     console.log(error);
-    if (error.status < 500) {
+    if (error.status !== undefined && error.status < 500 && error.message !== undefined) {
       res.status(error.status).json({ message: error.message });
     } else {
       res.status(500).json({ message: "Internal server error", error });
@@ -446,9 +446,9 @@ lessonsRouter.put("/updateComment", validation, async (req: RequestWithUser, res
     const updatedComments = updatedLessonData.Attributes!.info.comments;
 
     res.status(200).json({ message: "Success", updatedComments });
-  } catch (error) {
+  } catch (error: any) {
     console.log(error);
-    if (error.status < 500) {
+    if (error.status !== undefined && error.status < 500 && error.message !== undefined) {
       res.status(error.status).json({ message: error.message });
     } else {
       res.status(500).json({ message: "Internal server error", error });
@@ -501,9 +501,9 @@ lessonsRouter.put("/removeAssignment", validation, async (req: RequestWithUser, 
     const updatedAssignments = updatedLessonData.Attributes!.info.assignments;
 
     res.status(200).json({ message: "Success", updatedAssignments });
-  } catch (error) {
+  } catch (error: any) {
     console.log(error);
-    if (error.status < 500) {
+    if (error.status !== undefined && error.status < 500 && error.message !== undefined) {
       res.status(error.status).json({ message: error.message });
     } else {
       res.status(500).json({ message: "Internal server error", error });
@@ -556,9 +556,9 @@ lessonsRouter.put("/removeStudent", validation, async (req: RequestWithUser, res
     const updatedStudents = updatedLessonData.Attributes!.info.students;
 
     res.status(200).json({ message: "Success", updatedStudents });
-  } catch (error) {
+  } catch (error: any) {
     console.log(error);
-    if (error.status < 500) {
+    if (error.status !== undefined && error.status < 500 && error.message !== undefined) {
       res.status(error.status).json({ message: error.message });
     } else {
       res.status(500).json({ message: "Internal server error", error });
@@ -611,9 +611,9 @@ lessonsRouter.put("/removeComment", validation, async (req: RequestWithUser, res
     const updatedComments = updatedLessonData.Attributes!.info.comments;
 
     res.status(200).json({ message: "Success", updatedComments });
-  } catch (error) {
+  } catch (error: any) {
     console.log(error);
-    if (error.status < 500) {
+    if (error.status !== undefined && error.status < 500 && error.message !== undefined) {
       res.status(error.status).json({ message: error.message });
     } else {
       res.status(500).json({ message: "Internal server error", error });
@@ -646,9 +646,9 @@ lessonsRouter.delete("/deleteLesson/:id", validation, async (req: RequestWithUse
     await documentClient.delete(params, () => {});
 
     res.status(200).json({ message: "Lesson deleted." });
-  } catch (error) {
+  } catch (error: any) {
     console.log(error);
-    if (error.status < 500) {
+    if (error.status !== undefined && error.status < 500 && error.message !== undefined) {
       res.status(error.status).json({ message: error.message });
     } else {
       res.status(500).json({ message: "Internal server error", error });

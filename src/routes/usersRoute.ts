@@ -77,9 +77,9 @@ usersRouter.post("/register", async (req: Request, res: Response) => {
     delete newUser.passwordhash;
 
     res.status(200).json({ message: "User Created", token, user: newUser });
-  } catch (error) {
+  } catch (error: any) {
     console.log("In register endpoint", error);
-    if (error.status < 500) {
+    if (error.status !== undefined && error.status < 500) {
       res.status(error.status).json({ message: error.message });
     } else if (error.constraint === "users_email_key") {
       //bit hacky, but sends unique error back which is easier to catch on the front end.
@@ -138,9 +138,9 @@ usersRouter.post("/login", async (req: Request, res: Response) => {
       user,
       token,
     });
-  } catch (error) {
+  } catch (error: any) {
     console.log(error);
-    if (error.status < 500) {
+    if (error.status !== undefined && error.status < 500) {
       res.status(error.status).json({ message: error.message });
     } else {
       res.status(500).json({ message: "Internal server error", error });
@@ -164,9 +164,9 @@ usersRouter.get(
 
       //Responds with success message and the array of users
       res.status(200).json({ message: "Success", user });
-    } catch (error) {
+    } catch (error: any) {
       console.log("Get User Error", error);
-      if (error.status < 500) {
+      if (error.status !== undefined && error.status < 500) {
         res.status(error.status).json({ message: error.message });
       } else {
         res.status(500).json({ message: "Internal server error", error });
@@ -225,9 +225,9 @@ usersRouter.get("/getAllUsers", validation, async (req: RequestWithUser, res: Re
     allUsers.forEach((user: any) => delete user.passwordhash);
 
     res.status(200).json({ message: "Success", users: allUsers });
-  } catch (error) {
+  } catch (error: any) {
     console.log("Get all users error", error);
-    if (error.status < 500) {
+    if (error.status !== undefined && error.status < 500) {
       res.status(error.status).json({ message: error.message });
     } else {
       res.status(500).json({ message: "Internal server error", error });
@@ -262,9 +262,9 @@ usersRouter.put("/updateUser", validation, async (req: RequestWithUser, res: Res
     const updatedUser = updatedUserInfo.Attributes!.info;
 
     res.status(200).json({ message: "User Updated", updatedUser });
-  } catch (error) {
+  } catch (error: any) {
     console.log(error);
-    if (error.status < 500) {
+    if (error.status !== undefined && error.status < 500) {
       res.status(error.status).json({ message: error.message });
     } else if (error.constraint === "users_email_key") {
       //bit hacky, but sends unique error back which is easier to catch on the front end.
@@ -322,9 +322,9 @@ usersRouter.put("/updatePassword", validation, async (req: RequestWithUser, res:
     const updatedUserInfo = await documentClient.update(updateParams).promise();
 
     res.status(200).json({ message: "Password Updated" });
-  } catch (error) {
+  } catch (error: any) {
     console.log("Update Password Error", error);
-    if (error.status < 500) {
+    if (error.status !== undefined && error.status < 500) {
       res.status(error.status).json({ message: error.message });
     } else {
       res.status(500).json({ message: "Internal server error", error });
@@ -406,9 +406,9 @@ usersRouter.delete("/deleteUser/:id", validation, async (req: RequestWithUser, r
     }
 
     res.status(200).json({ message: "User Deleted" });
-  } catch (error) {
+  } catch (error: any) {
     console.log(error);
-    if (error.status < 500) {
+    if (error.status !== undefined && error.status < 500) {
       res.status(error.status).json({ message: error.message });
     } else {
       res.status(500).json({ message: "Internal server error", error });

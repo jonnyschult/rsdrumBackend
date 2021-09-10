@@ -40,9 +40,9 @@ paymentRouter.post("/createPaymentIntent", validation, async (req: RequestWithUs
     });
 
     res.status(200).json({ message: "Success. Payment information saved.", paymentIntent });
-  } catch (error) {
+  } catch (error: any) {
     console.log(error);
-    if (error.status < 500) {
+    if (error.status !== undefined && error.status < 500 && error.message !== undefined) {
       res.status(error.status).json({ message: error.message });
     } else {
       res.status(500).json({ message: "Internal server error", error });
@@ -73,9 +73,9 @@ paymentRouter.post("/savePayment", validation, async (req: RequestWithUser, res:
 
     const receipt = info;
     res.status(200).json({ message: "Success. Payment information saved.", receipt });
-  } catch (error) {
+  } catch (error: any) {
     console.log(error);
-    if (error.status < 500) {
+    if (error.status !== undefined && error.status < 500 && error.message !== undefined) {
       res.status(error.status).json({ message: error.message });
     } else {
       res.status(500).json({ message: "Payment made, but receipt failed to generate.", error });
@@ -113,9 +113,9 @@ paymentRouter.post("/createPackage", validation, async (req: RequestWithUser, re
     await documentClient.put(putParams).promise();
 
     res.status(200).json({ message: "Success.", newPackage: info });
-  } catch (error) {
+  } catch (error: any) {
     console.log(error);
-    if (error.status < 500) {
+    if (error.status !== undefined && error.status < 500 && error.message !== undefined) {
       res.status(error.status).json({ message: error.message });
     } else {
       res.status(500).json({ message: "Internal server error", error });
@@ -157,9 +157,9 @@ paymentRouter.get("/getPackages", async (req: RequestWithUser, res: Response) =>
     }
 
     res.status(200).json({ message: "Success.", packages });
-  } catch (error) {
+  } catch (error: any) {
     console.log(error);
-    if (error.status < 500) {
+    if (error.status !== undefined && error.status < 500 && error.message !== undefined) {
       res.status(error.status).json({ message: error.message });
     } else {
       res.status(500).json({ message: "Internal server error", error });
@@ -220,9 +220,9 @@ paymentRouter.get("/getReceipts", validation, async (req: RequestWithUser, res: 
       throw new CustomError(401, "Must be site admin, or own this data to gain access.");
     }
     res.status(200).json({ message: "Success.", receipts });
-  } catch (error) {
+  } catch (error: any) {
     console.log(error);
-    if (error.status < 500) {
+    if (error.status !== undefined && error.status < 500 && error.message !== undefined) {
       res.status(error.status).json({ message: error.message });
     } else {
       res.status(500).json({ message: "Internal server error", error });
@@ -268,9 +268,9 @@ paymentRouter.put(
       const updatedPackage = updatedPackageData.Attributes!.info;
 
       res.status(200).json({ message: "Package Updated", updatedPackage });
-    } catch (error) {
+    } catch (error: any) {
       console.log(error);
-      if (error.status < 500) {
+      if (error.status !== undefined && error.status < 500 && error.message !== undefined) {
         res.status(error.status).json({ message: error.message });
       } else {
         res.status(500).json({ message: "Internal server error", error });
@@ -309,9 +309,9 @@ paymentRouter.delete("/deletePackage/:id", validation, async (req: RequestWithUs
     }
 
     res.status(200).json({ message: "Package Deleted", deletedPackage });
-  } catch (error) {
+  } catch (error: any) {
     console.log(error);
-    if (error.status < 500) {
+    if (error.status !== undefined && error.status < 500 && error.message !== undefined) {
       res.status(error.status).json({ message: error.message });
     } else {
       res.status(500).json({ message: "Internal server error", error });

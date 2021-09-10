@@ -1,6 +1,4 @@
 //A function which updates an object dynamically
-import { User, Comment, Assignment, Lesson, Video, PackageOption } from "../models";
-
 type Info = { [key: string]: any };
 
 const dynmaicObjUpdater: (obj: Info, updateInfo: Info) => Info = (obj, updateInfo) => {

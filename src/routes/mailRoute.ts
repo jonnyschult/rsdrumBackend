@@ -34,7 +34,7 @@ nodemailerRouter.post("/sendMail", async (req: Request, res: Response) => {
         res.status(200).json({ message: "Message Sent", body });
       }
     });
-  } catch (error) {
+  } catch (error: any) {
     console.log(error);
     res.status(500).json({ message: "Server error. Message not sent", error });
   }
