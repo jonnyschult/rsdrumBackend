@@ -11,4 +11,3 @@ aws dynamodb create-table \
 --endpoint-url http://localhost:8000
 
 curl --header "Content-Type: application/json" --request POST --data '{  "info": { "email": "admin@test.com", "firstName": "Bob", "lastName": "Schult", "password": "testpass", "DOB": "11/25/1955", "admin": true, "student": false, "active": true}}' http://localhost:4040/users/register
-        
