@@ -44,6 +44,7 @@ This is a bit of work to get up and going locally, mostly because it requires yo
 - Start DynamoDB local instance
   - Instructions are in documentation, but you can go to the directory holding the DynamoDBLocal.jar and README.txt files, run `cat README.txt`. At the bottom is a command, `java -Djava.library.path=./DynamoDBLocal_lib -jar DynamoDBLocal.jar` run this command to start a local instance of DynamoDB.
 - Once downloaded, run this command with the AWS CLI :
+
   ```console
     $ aws dynamodb create-table \
     --table-name rsdrum \
@@ -57,6 +58,7 @@ This is a bit of work to get up and going locally, mostly because it requires yo
         ReadCapacityUnits=10,WriteCapacityUnits=5 \
   --endpoint-url http://localhost:8000
   ```
+
 - add .env to backEnd directory with following parameters:
   - PORT = 4040
   - DB_ENDPOINT = http://localhost:8000
@@ -76,14 +78,17 @@ This is a bit of work to get up and going locally, mostly because it requires yo
 ### Create admin user
 
 - Once the nodemon server is running either use cURL or Postman to add an admin user.
+
   - **_It is essential, if you are creating an admin user, to have the password set to "SecurityIsKey!" or whatever value is passed to ADMIN_PASS in .env_**
   - **_ Make sure the local instance of DynamoDB is running _**
   - cURL:
     - `curl --header "Content-Type: application/json" --request POST --data '{ "info": { "email": "admin@test.com", "firstName": "Buddy", "lastName": "Rich", "password": "SecurityIsKey!", "DOB": "09/30/1917", "admin": true, "student": false, "active": true}}' http://localhost:4040/users/register`
   - postman
+
     - url: http://localhost:4040/users/register
     - Content-Type: application/json
     - Under body, select "raw" and then drop down to JSON and add the following
+
     ```json
     {
       "info": {
