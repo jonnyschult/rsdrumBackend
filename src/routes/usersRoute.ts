@@ -6,7 +6,7 @@ import bcrypt from "bcryptjs";
 import { v4 as uuidV4 } from "uuid";
 import documentClient from "../db";
 import validation from "../middleware/userValidation";
-import { User, RequestWithUser, CustomError, Lesson, Comment } from "../models";
+import { User, RequestWithUser, CustomError, Comment } from "../models";
 import { DocumentClient } from "aws-sdk/clients/dynamodb";
 import { updateParamsFn, typeConverter } from "../utilities";
 

@@ -1,7 +1,6 @@
 import * as dotenv from "dotenv";
 dotenv.config();
 import { Router, Response } from "express";
-// const stripe = require("stripe")(process.env.STRIPE_SECRET);
 import Stripe from "stripe";
 import documentClient from "../db";
 import validation from "../middleware/userValidation";
